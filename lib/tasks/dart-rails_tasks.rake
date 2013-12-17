@@ -9,7 +9,7 @@ namespace :pub do
       file = File.join(root, 'bin', 'pub')
       pub = file if File.exist?(file)
     end
-    pub ||= (system('pub -h') ? 'pub' : false)
+    pub ||= (system('pub version') ? 'pub' : false)
     system %Q{sh -c "cd #{Rails.root.join('app', 'assets', 'darts')}; #{pub} get"}
   end
 end

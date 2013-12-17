@@ -35,6 +35,7 @@ module Dart
       def evaluate(scope, locals, &block)
         transcoder = DartJs.new((@file ? File.new(@file) : data), options)
         if transcoder.compile
+          puts transcoder.result
           @output ||= transcoder.get_js_content
         else
           # TODO: make it an error someone can work with
