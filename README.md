@@ -7,7 +7,9 @@ Handle [dart](https://www.dartlang.org/ 'dartlang.org') scripts so they get tran
 without dart support. Currently there's only the `Dartium` browser from the development-kit that supports
 dart directly.
 
-For now this is a rather stupid attempt, although it works.
+For now this is a rather stupid attempt, although it works. 
+
+For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart-rails-sample 'm0gg/dart-rails-sample').
 
 ### Setup
 
