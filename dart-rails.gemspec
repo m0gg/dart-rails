@@ -7,7 +7,7 @@ require 'dart/rails/version'
 Gem::Specification.new do |s|
   s.name        = 'dart-rails'
   s.version     = Dart::Rails::VERSION
-  s.authors     = ['Timo Uhlmann', 'Marcel Sackermann']
+  s.authors     = ['Marcel Sackermann']
   s.email       = %w(marcel@m0gg.org)
   s.homepage    = 'https://github.com/m0gg/dart-rails'
   s.summary     = 'Provides Sprockets based handling of .dart files'
@@ -17,6 +17,6 @@ Gem::Specification.new do |s|
   s.test_files = Dir['test/**/*']
 
   s.add_dependency 'rails', '>= 3.0.0'
-  s.add_dependency 'ruby-dart_js', '~> 0.0.2'
+  s.add_dependency 'ruby-dart_js', '~> 0.0.4'
   s.add_dependency 'sprockets-rails', '>= 2.0.0'
 end
