@@ -3,6 +3,9 @@ dart-rails
 
 ### Changelog
 
+v0.1.1 - 29. Aug. 2014:
+  * dart-rails will no longer break assets:precompile
+
 v0.1.0 - 29. Aug. 2014:
   * Note that `.dart2js` templates are no longer needed. Sprockets
   DirectiveProcessor for Javascript ist now capable of including
