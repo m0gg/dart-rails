@@ -30,26 +30,26 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
 
   1. `Gemfile`
 
-        ```ruby
-        gem 'ruby-dart', :git => 'https://github.com/m0gg/ruby-dart_js.git'
-        gem 'dart-rails', :git => 'https://github.com/m0gg/dart-rails.git'
-        ```
+    ```ruby
+    gem 'ruby-dart', :git => 'https://github.com/m0gg/ruby-dart_js.git'
+    gem 'dart-rails', :git => 'https://github.com/m0gg/dart-rails.git'
+     ```
 
   2. run `rails generate dart:assets` this will bring you:
 
-        ```sh
-        rails g dart:assets
-        create  app/assets/darts
-        create  app/assets/darts/dart_app.dart
-        create  app/assets/darts/dart_app.js.dart2js
-        create  app/assets/darts/pubspec.yaml
-        ```
+    ```sh
+    rails g dart:assets
+    create  app/assets/darts
+    create  app/assets/darts/dart_app.dart
+    create  app/assets/darts/dart_app.js.dart2js
+    create  app/assets/darts/pubspec.yaml
+    ```
 
   3. Currently you still need to add following to the bottom of your body in the layout:
 
      `layout.html.erb` (for instance)
 
-    ```html
+    ```
     <%= dart_include_tag 'dart_app' %>
     <%= javascript_include_tag 'dart' %>
     ```
