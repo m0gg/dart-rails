@@ -30,7 +30,7 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
 
   1. `Gemfile`
 
-        ```rb
+        ```ruby
         gem 'ruby-dart', :git => 'https://github.com/m0gg/ruby-dart_js.git'
         gem 'dart-rails', :git => 'https://github.com/m0gg/dart-rails.git'
         ```
@@ -86,7 +86,7 @@ would get
 ```
 To provide the transcompiled version of you dart-file you'll need a js template
 with a directive which could look like this
-```
+```javascript
 //
 //= dart dart_app
 ```
