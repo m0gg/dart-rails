@@ -37,8 +37,8 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
 
   2. run `rails generate dart:assets` this will bring you:
 
-        ````sh
-        $ rails g dart:assets
+        ```sh
+        rails g dart:assets
         create  app/assets/darts
         create  app/assets/darts/dart_app.dart
         create  app/assets/darts/dart_app.js.dart2js
