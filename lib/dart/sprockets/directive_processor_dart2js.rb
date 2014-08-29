@@ -1,7 +1,7 @@
 require 'fileutils'
 
 module Dart
-  module SprocketsDirectiveDart2js
+  module DirectiveProcessorDart2js
     def process_dart_directive path
       pathname = context.resolve([path, '.dart'].join)
 
