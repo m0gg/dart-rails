@@ -13,7 +13,7 @@ module Dart
   class Railtie < ::Rails::Railtie
 
     initializer :assets do |app|
-      Dart::DART2JS_OUT_DIR = ::Rails.root.join('tmp', 'cache')
+      Dart::DART2JS_OUT_DIR = ::Rails.root.join('tmp', 'cache', 'dart', (Digest::MD5.new << Time.now.to_s).to_s)
       
       # precompile compatibility-script
       ::Rails.application.config.assets.precompile << 'dart.js'
