@@ -5,7 +5,7 @@ module Dart
     def process_dart_directive(path)
       pathname = context.resolve([path, '.dart'].join)
 
-      ensure_directories_exist
+      ensure_dart2js_out_dir_exists
 
       transcoder = DartJs.new(File.new(pathname), options.merge({ out_dir: Dart::DART2JS_OUT_DIR }))
       result = transcoder.compile
@@ -21,15 +21,8 @@ module Dart
 
     private
 
-    def ensure_directories_exist
-      path = Dart::DART2JS_OUT_DIR
-      directories = path.sub((::Rails.root.to_s + '/'), '').split('/')
-      folder_path = ::Rails.root.to_s
-
-      directories.each do |directory|
-        folder_path += '/' + directory
-        Dir.mkdir folder_path unless File.directory? folder_path
-      end
+    def ensure_dart2js_out_dir_exists
+      FileUtils.mkdir_p Dart::DART2JS_OUT_DIR unless File.directory?(Dart::DART2JS_OUT_DIR)
     end
   end
 end
