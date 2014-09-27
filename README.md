@@ -3,6 +3,9 @@ dart-rails
 
 ### Changelog
 
+v0.1.2 - 27. Sep. 2014:
+  * slightly different dart2js output directory-tree, now based on md5-hashed timestamps
+
 v0.1.1 - 29. Aug. 2014:
   * dart-rails will no longer break assets:precompile
 
