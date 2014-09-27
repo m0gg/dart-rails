@@ -23,8 +23,8 @@ module Dart
 
     def ensure_directories_exist
       path = Dart::DART2JS_OUT_DIR
-      directories = path.sub(Rails.root.to_s + '/', '').split('/')
-      folder_path = Rails.root.to_s
+      directories = path.sub((::Rails.root.to_s + '/'), '').split('/')
+      folder_path = ::Rails.root.to_s
 
       directories.each do |directory|
         folder_path += '/' + directory

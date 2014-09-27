@@ -15,7 +15,7 @@ module Dart
     initializer :assets do |app|
       hash = (Digest::MD5.new << Time.now.to_s).to_s
       Dart::DART2JS_OUT_DIR = app.root.join('tmp', 'cache', 'assets', 'development', 'dart', hash)
-      
+
       # precompile compatibility-script
       ::Rails.application.config.assets.precompile << 'dart.js'
 
