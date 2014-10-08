@@ -40,7 +40,7 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
   1. `Gemfile`
 
     ```ruby
-    gem 'ruby-dart', :git => 'https://github.com/m0gg/ruby-dart_js.git'
+    gem 'ruby-dart2js', :git => 'https://github.com/m0gg/ruby-dart2js.git'
     gem 'dart-rails', :git => 'https://github.com/m0gg/dart-rails.git'
      ```
 
@@ -75,7 +75,7 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
 
 This gem is needed for the `dart2js` compiler compatibility.
 
-See [ruby-dart_js](https://github.com/m0gg/ruby-dart_js) on github for setup.
+See [ruby-dart_js](https://github.com/m0gg/ruby-dart2js) on github for setup.
 
 ```
 <%= javascript_include_tag 'dart' %>
