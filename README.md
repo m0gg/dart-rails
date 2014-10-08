@@ -2,6 +2,9 @@ dart-rails
 ==========
 
 ### Changelog
+v0.2.0 - 08. Oct. 2014:
+  * dart-rails can now detect changes in dart code and its dependencies
+  * RailsUjs call is now in the initial dart_app.dart template
 
 v0.1.2 - 27. Sep. 2014:
   * slightly different dart2js output directory-tree, now based on md5-hashed timestamps
