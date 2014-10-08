@@ -5,13 +5,12 @@ dart-rails
 v0.2.0 - 08. Oct. 2014:
   * dart-rails can now detect changes in dart code and its dependencies
   * RailsUjs call is now in the initial dart_app.dart template
-
-v0.1.2 - 27. Sep. 2014:
-  * slightly different dart2js output directory-tree, now based on md5-hashed timestamps
   * fixed pathname to touch for change recognition
   * renamed relevant constants to Dart2Js
   * bumped ruby-dart2js version to 0.1.0
-
+  
+v0.1.2 - 27. Sep. 2014:
+  * slightly different dart2js output directory-tree, now based on md5-hashed timestamps
 
 v0.1.1 - 29. Aug. 2014:
   * dart-rails will no longer break assets:precompile
