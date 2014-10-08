@@ -32,24 +32,23 @@ module Dart
     DART_EGREP_PATH = /['"](package:)?(.*)['"]/
 
     def dart_get_dependencies(pathname)
-      deps = []
-      if File.exists?(pathname)
-        f = File.open(pathname)
-        f.each do |l|
-          if DART_EGREP =~ l
-            m = l.match(DART_EGREP_PATH)
-            dep_path = (m[1] ? "packages/#{m[2]}" : m[2])
-            deps << context.resolve(dep_path)
-          end
-        end
-        f.close
-        rdeps = []
-        deps.each do |dep|
-          rdeps += dart_get_dependencies(dep)
-        end
-        return (deps + rdeps).uniq
+      deps = dart_find_imports(pathname)
+      #recursive search
+      deps += deps.map do |dep|
+        dart_get_dependencies(dep)
       end
-      return nil
+      return deps.uniq
+    end
+
+    def dart_find_imports(pathname)
+      File.exists?(pathname) && File.readlines(pathname).each do |l|
+        #relevant line?
+        next unless DART_EGREP =~ l
+        m = l.match(DART_EGREP_PATH)
+        #package or part?
+        dep_path = (m[1] ? "packages/#{m[2]}" : m[2])
+        deps << context.resolve(dep_path)
+      end
     end
 
     def ensure_dart2js_out_dir_exists
