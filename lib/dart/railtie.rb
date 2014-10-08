@@ -1,6 +1,6 @@
 require 'rails'
 require 'rails/railtie'
-require 'dart_js'
+require 'dart2js'
 require 'sprockets'
 require 'dart/sprockets/directive_processor_dart2js'
 require 'dart/rails/engine'

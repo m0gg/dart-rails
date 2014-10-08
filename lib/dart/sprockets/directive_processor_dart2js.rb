@@ -3,27 +3,24 @@ require 'fileutils'
 module Dart
   module DirectiveProcessorDart2js
     def process_dart_directive(path)
-      pathname = context.resolve([path, '.dart'].join)
-      pathname_js = context.resolve([path, '.js'].join)
+      dart_path = context.resolve([path, '.dart'].join)
 
-      ensure_dart2js_out_dir_exists
-
-      transcoder = DartJs.new(File.new(pathname), options.merge({ out_dir: Dart::DART2JS_OUT_DIR }))
-      result = transcoder.compile
+      dart2js_compiler = ::Dart2Js.new(File.new(dart_path), options.merge({ out_dir: dart2js_out_dir }))
+      result = dart2js_compiler.compile
 
       #update Timestamp so we can compare possible changes
-      FileUtils.touch pathname_js
+      FileUtils.touch @pathname
 
       if result.respond_to?(:exception)
         puts "\n------------- dart2js compilation exception -------------\n#{result.message}\n#{result.result}\n------------- dart2js compilation exception -------------"
         raise result
       end
 
-      context.depend_on(pathname)
-      dart_get_dependencies(pathname).each do |dep|
+      context.depend_on(dart_path)
+      dart_get_dependencies(dart_path).each do |dep|
         context.depend_on(dep)
       end
-      included_pathnames << transcoder.out_file
+      included_pathnames << dart2js_compiler.out_file
     end
 
     private
@@ -43,7 +40,7 @@ module Dart
     def dart_find_imports(pathname)
       deps = []
       File.exists?(pathname) && File.readlines(pathname).each do |l|
-        #relevant line?
+        #relevant line (import)?
         next unless DART_EGREP =~ l
         m = l.match(DART_EGREP_PATH)
         #package or part?
@@ -53,8 +50,9 @@ module Dart
       deps
     end
 
-    def ensure_dart2js_out_dir_exists
+    def dart2js_out_dir
       FileUtils.mkdir_p Dart::DART2JS_OUT_DIR unless File.directory?(Dart::DART2JS_OUT_DIR)
+      Dart::DART2JS_OUT_DIR
     end
   end
 end
