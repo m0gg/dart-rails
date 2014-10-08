@@ -37,10 +37,11 @@ module Dart
       deps += deps.map do |dep|
         dart_get_dependencies(dep)
       end
-      return deps.uniq
+      deps.uniq.flatten
     end
 
     def dart_find_imports(pathname)
+      deps = []
       File.exists?(pathname) && File.readlines(pathname).each do |l|
         #relevant line?
         next unless DART_EGREP =~ l
@@ -49,6 +50,7 @@ module Dart
         dep_path = (m[1] ? "packages/#{m[2]}" : m[2])
         deps << context.resolve(dep_path)
       end
+      deps
     end
 
     def ensure_dart2js_out_dir_exists
