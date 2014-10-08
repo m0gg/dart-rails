@@ -5,6 +5,10 @@ dart-rails
 
 v0.1.2 - 27. Sep. 2014:
   * slightly different dart2js output directory-tree, now based on md5-hashed timestamps
+  * fixed pathname to touch for change recognition
+  * renamed relevant constants to Dart2Js
+  * bumped ruby-dart2js version to 0.1.0
+
 
 v0.1.1 - 29. Aug. 2014:
   * dart-rails will no longer break assets:precompile
@@ -28,7 +32,7 @@ Handle [dart](https://www.dartlang.org/ 'dartlang.org') scripts so they get tran
 without dart support. Currently there's only the `Dartium` browser from the development-kit that supports
 dart directly.
 
-For now this is a rather stupid attempt, although it works. 
+For now this is a rather stupid attempt, although it works.
 
 For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart-rails-sample 'm0gg/dart-rails-sample').
 
