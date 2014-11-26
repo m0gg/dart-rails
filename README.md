@@ -2,7 +2,7 @@ dart-rails
 ==========
 
 ### Changelog
-v0.2.1 - 188. Oct. 2014:
+v0.2.1 - 18. Oct. 2014:
   * dart2js compilation no longer recurses to infinity and further, this problem came uo to me while working with angularDart, which now compiles fine (takes some time though)
   * sorry for dev-gap, been quite busy in university
   
