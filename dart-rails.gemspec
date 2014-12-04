@@ -19,5 +19,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '>= 4.0.0'
   s.add_dependency 'ruby-dart2js', '~> 0.1.0'
   s.add_dependency 'sprockets-rails', '>= 2.0.0'
-  s.add_dependency 'non-stupid-digest-assets'
 end

@@ -2,6 +2,15 @@ dart-rails
 ==========
 
 ### Changelog
+v0.2.1 - 04. Dec. 2014:
+  * due to sprockets digest method, we are forced to use a workaround to allow
+  "precompilation" of .dart files, see [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets)
+  and [Inability to compile nondigest and digest assets breaks compatibility with bad gems #49](https://github.com/rails/sprockets-rails/issues/49)
+  it is optionally (and automatically) available by adding `gem 'non-stupid-digest-assets', '>= 1.1', github: 'm0gg/non-stupid-digest-assets'
+` to your Gemfile
+  * added dart_app.js to precompile list
+  * faced an issue with UglifyJs stackoverflowing with too large dart2js files
+
 v0.2.0 - 08. Oct. 2014:
   * dart-rails can now detect changes in dart code and its dependencies
   * RailsUjs call is now in the initial dart_app.dart template
@@ -73,6 +82,41 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
   *Note:* you'll need to point `DART_SDK_HOME` to the root of your dart-sdk unless your `pub` executable is in the `PATH`
 
 ### Compatibility
+
+###### UglifyJs
+
+Don't worry if you're experiencing a
+
+```
+ExecJS::ProgramError: RangeError: Maximum call stack size exceeded
+```
+
+This is exactly what it means, a stackoverflow of UglifyJs. According to
+[RangeError: Maximum call stack size exceeded #414](https://github.com/mishoo/UglifyJS2/issues/414) UglifyJs is
+massivly recursive and your dart2js file might have blown it. This happened to me with an AngluarDart application.
+You may simply disable UglifyJs in the environment file.
+
+```
+...
+# Compress JavaScripts and CSS.
+# config.assets.js_compressor = :uglifier
+...
+```
+
+###### assets:precompile + native .dart files
+
+As of rails 4 we are facing a problem for the productive environments.
+See [Inability to compile nondigest and digest assets breaks compatibility with bad gems #49](https://github.com/rails/sprockets-rails/issues/49)
+
+You may optionally add this to your Gemfile
+
+```
+gem 'non-stupid-digest-assets', '>= 1.1', github: 'm0gg/non-stupid-digest-assets
+```
+
+this will enable a workaround for digesting the assets while precompiling dart files as
+seen in [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets) and
+additionally rewrite the manifests to use the non-digest files.
 
 ###### ruby-dart_js
 
