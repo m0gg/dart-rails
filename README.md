@@ -2,7 +2,7 @@ dart-rails
 ==========
 
 ### Changelog
-v0.2.1 - 04. Dec. 2014:
+v0.2.2 - 04. Dec. 2014:
   * due to sprockets digest method, we are forced to use a workaround to allow
   "precompilation" of .dart files, see [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets)
   and [Inability to compile nondigest and digest assets breaks compatibility with bad gems #49](https://github.com/rails/sprockets-rails/issues/49)
@@ -11,6 +11,10 @@ v0.2.1 - 04. Dec. 2014:
   * added dart_app.js to precompile list
   * faced an issue with UglifyJs stackoverflowing with too large dart2js files
 
+v0.2.1 - 18. Oct. 2014:
+  * dart2js compilation no longer recurses to infinity and further, this problem came uo to me while working with angularDart, which now compiles fine (takes some time though)
+  * sorry for dev-gap, been quite busy in university
+  
 v0.2.0 - 08. Oct. 2014:
   * dart-rails can now detect changes in dart code and its dependencies
   * RailsUjs call is now in the initial dart_app.dart template
