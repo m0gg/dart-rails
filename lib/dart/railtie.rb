@@ -9,6 +9,8 @@ require 'dart/rails/version'
 require 'dart/rails/helper'
 require 'dart/rails/generators/assets/generator'
 
+require 'non-stupid-digest-assets'
+
 module Dart
   class Railtie < ::Rails::Railtie
 
@@ -18,6 +20,16 @@ module Dart
 
       # precompile compatibility-script
       ::Rails.application.config.assets.precompile << 'dart.js'
+      ::Rails.application.config.assets.precompile << 'dart_app.js'
+
+      # do not digest .dart files
+      # digest during compilation breaks darts 'import' functionality
+      # currently sprockets-rails does not allow mixed procompilation of digest and non-digest assets
+      # see https://github.com/rails/sprockets-rails/issues/49
+      # workaround is a 51-liner gem 'non-stupid-digest-assets'
+      # https://github.com/alexspeller/non-stupid-digest-assets
+      #
+      NonStupidDigestAssets.whitelist << /.*\.dart/
 
       # Register mime-types
       app.assets.register_mime_type 'application/dart', '.dart'
