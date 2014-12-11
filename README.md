@@ -4,6 +4,7 @@ dart-rails
 ### Changelog
 v0.2.0 - 12. Dec. 2014 - update:
   * dart-rails is now available via rubygems, it's first published with version 0.2.2
+ 
 v0.2.2 - 04. Dec. 2014:
   * due to sprockets digest method, we are forced to use a workaround to allow
   "precompilation" of .dart files, see [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets)
