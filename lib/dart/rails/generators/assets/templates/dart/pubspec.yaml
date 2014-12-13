@@ -1,6 +1,4 @@
-name: dart-app
+name: dart_app
 description:
 dependencies:
-  rails_ujs:
-    git:
-      url: https://github.com/m0gg/dart-rails_ujs.git
+  rails_ujs: any

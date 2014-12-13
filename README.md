@@ -2,6 +2,9 @@ dart-rails
 ==========
 
 ### Changelog
+v0.2.4 - 13. Dec. 2014 - update:
+  * corrected `pubspec.yml` to assign valid `dart_app` as name
+
 v0.2.3 - 13. Dec. 2014:
   * fix 2 issues documented as [Fix the generated pubspec.yml #13](https://github.com/m0gg/dart-rails/issues/13)
   and [Generators run each time rails g runs #12](https://github.com/m0gg/dart-rails/issues/12)
