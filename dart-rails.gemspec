@@ -13,8 +13,9 @@ Gem::Specification.new do |s|
   s.summary     = 'Provides Sprockets based handling of .dart files'
   s.description = 'Delivers .dart directly to Dartium-browser and transcodes via ruby-dart_js for others.'
 
-  s.files = Dir['{lib}/**/*'] + %w(MIT-LICENSE Rakefile) #, 'README.rdoc']
+  s.files = Dir['{lib}/**/*'] + %w(MIT-LICENSE Rakefile, README.md)
   s.test_files = Dir['test/**/*']
+  s.licenses = ['MIT']
 
   s.add_dependency 'rails', '>= 4.0.0'
   s.add_dependency 'ruby-dart2js', '~> 0.1.0'
