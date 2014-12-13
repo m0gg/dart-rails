@@ -1,5 +1,5 @@
-module Dart
-  module Rails
-    VERSION = "0.2.2"
+module Dart #:nodoc:
+  module Rails #:nodoc:
+    VERSION = '0.2.3'
   end
 end

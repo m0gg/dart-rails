@@ -1,7 +1,9 @@
 require 'fileutils'
+require 'dart2js'
 
-module Dart
+module Dart #:nodoc:
   module DirectiveProcessorDart2js
+
     def process_dart_directive(path)
       dart_path = context.resolve([path, '.dart'].join)
 
@@ -55,8 +57,7 @@ module Dart
     end
 
     def dart2js_out_dir
-      FileUtils.mkdir_p Dart::DART2JS_OUT_DIR unless File.directory?(Dart::DART2JS_OUT_DIR)
-      Dart::DART2JS_OUT_DIR
+      Dart::Rails::JsCompatEngine::DART2JS_OUT_DIR
     end
   end
 end

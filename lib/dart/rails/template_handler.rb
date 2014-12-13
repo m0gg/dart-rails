@@ -1,5 +1,5 @@
-module Dart
-  module Rails
+module Dart #:nodoc:
+  module Rails #:nodoc:
 
     # TemplateHandler for dart scripts
     class TemplateHandler

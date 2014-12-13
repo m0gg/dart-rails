@@ -2,9 +2,16 @@ dart-rails
 ==========
 
 ### Changelog
-v0.2.0 - 12. Dec. 2014 - update:
+v0.2.3 - 13. Dec. 2014:
+  * fix 2 issues documented as [Fix the generated pubspec.yml #13](https://github.com/m0gg/dart-rails/issues/13)
+  and [Generators run each time rails g runs #12](https://github.com/m0gg/dart-rails/issues/12)
+  * generators no longer try to run `rails g dart:assets` as javascript_engine
+  * generated `pubspec.yml` now staticly assigns `dart-app` as name
+  * railtie restructured and split into two engines
+
+v0.2.2 - 12. Dec. 2014 - update:
   * dart-rails is now available via rubygems, it's first published with version 0.2.2
- 
+
 v0.2.2 - 04. Dec. 2014:
   * due to sprockets digest method, we are forced to use a workaround to allow
   "precompilation" of .dart files, see [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets)
