@@ -2,6 +2,9 @@ dart-rails
 ==========
 
 ### Changelog
+v0.2.0 - 12. Dec. 2014 - update:
+  * dart-rails is now available via rubygems, it's first published with version 0.2.2
+ 
 v0.2.2 - 04. Dec. 2014:
   * due to sprockets digest method, we are forced to use a workaround to allow
   "precompilation" of .dart files, see [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets)
@@ -56,8 +59,8 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
   1. `Gemfile`
 
     ```ruby
-    gem 'ruby-dart2js', :git => 'https://github.com/m0gg/ruby-dart2js.git'
-    gem 'dart-rails', :git => 'https://github.com/m0gg/dart-rails.git'
+    gem 'ruby-dart2js'
+    gem 'dart-rails'
      ```
 
   2. run `rails generate dart:assets` this will bring you:
