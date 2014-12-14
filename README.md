@@ -128,7 +128,7 @@ See [Inability to compile nondigest and digest assets breaks compatibility with 
 You may optionally add this to your Gemfile
 
 ```
-gem 'non-stupid-digest-assets', '>= 1.1', github: 'm0gg/non-stupid-digest-assets
+gem 'non-stupid-digest-assets', '>= 1.1', github: 'm0gg/non-stupid-digest-assets'
 ```
 
 this will enable a workaround for digesting the assets while precompiling dart files as
