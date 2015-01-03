@@ -135,11 +135,11 @@ this will enable a workaround for digesting the assets while precompiling dart f
 seen in [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets) and
 additionally rewrite the manifests to use the non-digest files.
 
-###### ruby-dart_js
+###### ruby-dart2js
 
 This gem is needed for the `dart2js` compiler compatibility.
 
-See [ruby-dart_js](https://github.com/m0gg/ruby-dart2js) on github for setup.
+See [ruby-dart2js](https://github.com/m0gg/ruby-dart2js) on github for setup.
 
 ```
 <%= javascript_include_tag 'dart' %>
