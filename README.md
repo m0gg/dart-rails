@@ -2,6 +2,9 @@ dart-rails
 ==========
 
 ### Changelog
+v0.2.5 - 14. Jan. 2015:
+  * fixed a misplaced initializer for non-stupid-digest-assets that caused every asset to be non-digested
+
 v0.2.4 - 13. Dec. 2014 - update:
   * corrected `pubspec.yml` to assign valid `dart_app` as name
 
