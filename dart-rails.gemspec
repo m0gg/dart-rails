@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.licenses = ['MIT']
 
   s.add_dependency 'rails', '>= 4.0.0'
-  s.add_dependency 'ruby-dart2js', '~> 0.1.0'
+  s.add_dependency 'ruby-dart2js', '~> 0.2.0'
   s.add_dependency 'sprockets-rails', '>= 2.0.0'
 end
