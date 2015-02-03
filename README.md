@@ -1,5 +1,4 @@
-dart-rails
-==========
+# dart-rails [![dart-rails API Documentation](https://www.omniref.com/ruby/gems/dart-rails.png)](https://www.omniref.com/ruby/gems/dart-rails) #
 
 ### Idea ###
 
