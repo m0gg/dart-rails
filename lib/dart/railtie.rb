@@ -25,7 +25,7 @@ module Dart #:nodoc:
         NonStupidDigestAssets.whitelist += [ /.*\.dart/, 'dart_app.js', 'dart_app' ]
       end
     rescue Exception => e
-      ::Rails.logger.info 'No non-stupid-digest-assets support. You may face issues with native dart-support!'
+      puts 'No non-stupid-digest-assets support. You may face issues with native dart-support!'
     end
 
     config.after_initialize do |app|
