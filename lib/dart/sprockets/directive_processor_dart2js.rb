@@ -5,17 +5,17 @@ module Dart #:nodoc:
   module DirectiveProcessorDart2js
 
     def process_dart_directive(path)
-      dart_path = context.resolve([path, '.dart'].join)
+      dart_path = resolve([path, '.dart'].join, { base_path: @dirname })
 
-      context.depend_on(dart_path)
+      process_depend_on_directive(dart_path)
       dart_get_dependencies(dart_path).each do |dep|
-        context.depend_on(dep)
+        process_depend_on_directive(dep)
       end
 
       #update Timestamp so we can compare possible changes
-      FileUtils.touch @pathname
+      FileUtils.touch @filename
 
-      dart2js_compiler = ::Dart2Js.new(File.new(dart_path), options.merge({ out_dir: dart2js_out_dir }))
+      dart2js_compiler = ::Dart2Js.new(File.new(URI(dart_path).path), { out_dir: dart2js_out_dir })
       result = dart2js_compiler.compile
 
       if result.respond_to?(:exception)
@@ -23,7 +23,7 @@ module Dart #:nodoc:
         raise result
       end
 
-      included_pathnames << dart2js_compiler.out_file
+      require_paths({ dart2js_compiler.out_file => @environment.stat(dart2js_compiler.out_file) }, Set.new)
     end
 
     private
@@ -51,7 +51,7 @@ module Dart #:nodoc:
         next unless DART_EGREP =~ l
         m = l.match(DART_EGREP_PATH)
         #package or part?
-        deps << (m[1] ? context.resolve("packages/#{m[2]}") : "#{pathname.to_s.slice /^.*\//}#{m[2]}")
+        deps << (m[1] ? resolve("packages/#{m[2]}") : "#{pathname.to_s.slice /^.*\//}#{m[2]}")
       end
       deps
     end

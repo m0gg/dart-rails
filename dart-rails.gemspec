@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 4.0.0', '< 5.0.0'
   s.add_dependency 'ruby-dart2js', '~> 0.2.2'
-  s.add_dependency 'sprockets-rails', '>= 2.0.0', '< 3.0.0'
+  s.add_dependency 'sprockets-rails', '>= 2.3.0'
+  s.add_dependency 'sprockets', '>= 3.0.0', '<= 4.0.0'
 end
