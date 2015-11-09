@@ -127,6 +127,12 @@ included (via `dart` directive) in `.js` templates get compiled and inserted.
 
 
 ### Changelog ###
+v0.3.3 - 9. Nov. 2015:
+  * support for sprockets-rails > 2.3.0
+
+v0.3.2-p1 - 9. Nov. 2015:
+  * remain support for sprockets-rails prior 2.3.0
+
 v0.3.0 - 21. Jan. 2015:
   * with v0.2.0 of ruby-dart2js, minifying is supported and will bump the feature version of dart-rails with updated dependencies
 
