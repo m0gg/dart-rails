@@ -15,9 +15,14 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
   1. `Gemfile`
 
     ```ruby
-    gem 'ruby-dart2js'
     gem 'dart-rails'
      ```
+    
+    For `sprockets-rails` versions prior 2.3.0 please use 
+    
+    ```ruby
+    gem 'dart-rails', '0.3.2-p1'
+    ```
 
   2. run `rails generate dart:assets` this will bring you:
 
