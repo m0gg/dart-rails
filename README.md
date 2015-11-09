@@ -10,6 +10,11 @@ For now this is a rather stupid attempt, although it works.
 
 For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart-rails-sample 'm0gg/dart-rails-sample').
 
+## Attention ##
+Delivering dart files currently is useless unless you're using Dartium.
+
+Please provide your opinion in https://github.com/m0gg/dart-rails/issues/17 if you're interested.
+
 ### Setup ###
 
   1. `Gemfile`
