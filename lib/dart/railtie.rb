@@ -1,11 +1,9 @@
 require 'rails'
 require 'rails/railtie'
-require 'dart/sprockets/directive_processor_dart2js'
 require 'dart/rails/version'
-require 'dart/rails/js_compat_engine'
 require 'dart/rails/dart_asset_helper'
+require 'dart/rails/js_compat_engine'
 require 'dart/rails/generators/assets/generator'
-require 'dart/rails/template_handler'
 
 
 module Dart #:nodoc:
