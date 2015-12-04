@@ -17,42 +17,72 @@ Please provide your opinion in https://github.com/m0gg/dart-rails/issues/17 if y
 
 ### Setup ###
 
-  1. `Gemfile`
+1. `Gemfile`
 
-    ```ruby
-    gem 'dart-rails'
-     ```
-    
-    For `sprockets-rails` versions prior 2.3.0 please use 
-    
-    ```ruby
-    gem 'dart-rails', '0.3.2-p1'
-    ```
+  ```ruby
+  gem 'dart-rails'
+   ```
 
-  2. run `rails generate dart:assets` this will bring you:
+  For `sprockets-rails` versions prior 2.3.0 please use
 
-    ```sh
-    rails g dart:assets
-    create  app/assets/dart
-    create  app/assets/dart/dart_app.dart
-    create  app/assets/dart/dart_app.js
-    create  app/assets/dart/pubspec.yaml
-    ```
+  ```ruby
+  gem 'dart-rails', '0.3.2-p1'
+  ```
 
-  3. Currently you still need to add following to the bottom of your body in the layout:
+2. run `rails generate dart:assets` this will bring you:
 
-     `layout.html.erb` (for instance)
+  ```sh
+  rails g dart:assets
+  create  app/assets/dart
+  create  app/assets/dart/dart_app.dart
+  create  app/assets/dart/dart_app.js.dart2js
+  create  app/assets/dart/pubspec.yaml
+  ```
 
-    ```
-    <%= dart_include_tag 'dart_app' %>
-    <%= javascript_include_tag 'dart' %>
-    ```
+3. Currently you still need to add following to the bottom of your body in the layout:
 
-  4. *Optional:* run `rake pub:get` to respect the dependencies in your `pubspec.yaml`.
-  Initially the pubspec contains `rails_ujs` as dependency, this is just basic for now,
-  so you probably want to omit it if you're still using JQuery.
+   `layout.html.erb` (for instance)
 
-  *Note:* you'll need to point `DART_SDK_HOME` to the root of your dart-sdk unless your `pub` executable is in the `PATH`
+  ```
+  <%= dart_include_tag 'dart_app' %>
+  <%= javascript_include_tag 'dart' %>
+  ```
+
+4. *Optional:* run `rake pub:get` to respect the dependencies in your `pubspec.yaml`.
+Initially the pubspec contains `rails_ujs` as dependency, this is just basic for now,
+so you probably want to omit it if you're still using JQuery.
+
+*Note:* you'll need to point `DART_SDK_HOME` to the root of your dart-sdk unless your `pub` executable is in the `PATH`
+
+#### ruby-dart2js ####
+
+See [ruby-dart2js](https://github.com/m0gg/ruby-dart2js) on github for setup.
+
+As of 0.4.0 the behavior changed. It's no longer considered compat to deliver JS
+but to deliver dart.
+
+By default you'll want to have this in your in your `application.js`
+```javascript
+...
+//= require dart_app
+...
+```
+
+If you need dart files directly for debugging in Dartium you should instead have
+those tags in your layout. If you wonder why: [issue-17# Handling of .dart files still necessary? ](https://github.com/m0gg/dart-rails/issues/17)
+
+```html
+...
+<body>
+
+  ...
+
+  <%= dart_include_tag 'dart_app' %>
+  <%= javascript_include_tag 'dart' %>
+</body>
+```
+
+__Attention__: don't use both! Your Dartium may go crazy!
 
 ### Compatibility ###
 
@@ -91,42 +121,26 @@ this will enable a workaround for digesting the assets while precompiling dart f
 seen in [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets) and
 additionally rewrite the manifests to use the non-digest files.
 
-###### ruby-dart2js ######
 
-This gem is needed for the `dart2js` compiler compatibility.
 
-See [ruby-dart2js](https://github.com/m0gg/ruby-dart2js) on github for setup.
-
-```
-<%= javascript_include_tag 'dart' %>
-```
-in the layout needs to stay as it is unless you want to drop
-compatibility for browsers without dart support.
-It includes the bundled `javascripts/dart.js` from this gem.
-
-This will parse all script-tags with `type="application/dart"` and replace them with tags that request
-the appropriate js file.
-```html
-<script type="application/dart" src="/assets/dart_app.dart"></script>
-```
-would get
-```html
-<script type="application/javascript" src="/assets/dart_app.js"></script>
-```
-To provide the transcompiled version of you dart-file you'll need a js template
-with a directive which could look like this
-```javascript
-//
-//= dart dart_app
-```
 
 ###### Sprockets ######
 
-`Dart::SprocketsDirectiveDart2js` extends Sprockets base `DirectiveProcessor` and thus each dart-file
-included (via `dart` directive) in `.js` templates get compiled and inserted.
+~~`Dart::SprocketsDirectiveDart2js` extends Sprockets base `DirectiveProcessor` and thus each dart-file
+included (via `dart` directive) in `.js` templates get compiled and inserted.~~
+
+This hack is no longer needed as of 0.4.0
 
 
 ### Changelog ###
+v0.4.0 - 4. Dec. 2015:
+  * you now need a dart_app.js.dart2js template with following content:
+
+  `app/assets/dart/dart_app.js.dart2js`
+  ```javascript
+  //= include dart_app.dart
+  ```
+
 v0.3.3 - 9. Nov. 2015:
   * support for sprockets-rails > 2.3.0
 
