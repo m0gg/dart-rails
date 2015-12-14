@@ -1,7 +1,8 @@
-require 'sprockets/directive_processor'
+require 'tilt/template'
+require 'dart2js'
 
 module Dart
-  class Dart2JsCompiler < Sprockets::DirectiveProcessor
+  class Dart2JsCompiler < Tilt::Template
     self.default_mime_type = 'application/javascript'
 
     def self.engine_initialized?
