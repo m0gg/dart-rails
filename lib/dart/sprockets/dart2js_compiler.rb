@@ -18,13 +18,16 @@ module Dart
     def prepare
     end
 
+    def self.call(input)
+      # it's necessary for dart2js to have the dart file in th same directory as its depencencies
+      compiler = ::Dart2Js.new(input[:data], pwd: File.dirname(input[:filename]))
+      result = compiler.compile
+      compiler.close
+      result
+    end
+
     def evaluate(context, locals, &block)
-      compiler = ::Dart2Js.new(File.new(context.pathname))
-      if (e = compiler.compile(false)).is_a?(::Dart2JsExceptions::CompilationException)
-        "alert(\"dart2js failed to compile: #{e}\");"
-      else
-        compiler.get_js_content
-      end
+      self.class.call({ filename: context.pathname, data: data })
     end
   end
 end
