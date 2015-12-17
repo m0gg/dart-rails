@@ -1,0 +1,14 @@
+image: ruby:2.2
+before_script:
+  - bundle install
+
+stages:
+  - build
+
+job1:
+  stage: build
+  script:
+    - gem build dart-rails.gemspec
+  tags:
+    - docker
+
