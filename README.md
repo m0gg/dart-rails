@@ -10,8 +10,15 @@ For a working sample check [m0gg/dart-rails-sample](https://github.com/m0gg/dart
 
 ## Attention ##
 If you're upgrading from versions prior `0.4.2` and use `sprockets >= 3.0.0` you need to replace your
-`dart_app.js.dart2js` with a symlink pointing to your `dart_app.dart` as `sprockets >= 3.0.0` no longer
-supports the `//= include` directive.
+`dart_app.js.dart2js` or `dart_app.js` (depends form which version you're upgrading) with a symlink pointing to
+your `dart_app.dart` as `sprockets >= 3.0.0` no longer supports the `//= include` directive.
+
+example `ls app/assets/dart/`
+```bash
+$ ls app/assets/dart/dart_app.*
+app/assets/dart/dart_app.dart  app/assets/dart/dart_app.js.dart2js
+```
+
 
 
 ### Setup ###
