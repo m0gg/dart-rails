@@ -108,20 +108,23 @@ You may simply disable UglifyJs in the environment file.
 
 ###### assets:precompile + native .dart files ######
 
-*Attention* currently not working with `rails >= 4.2`
+*This is no longer relevant as there are no browsers that support native dart and
+should be used for production.*
 
-As of rails 4 we are facing a problem for the productive environments.
-See [Inability to compile nondigest and digest assets breaks compatibility with bad gems #49](https://github.com/rails/sprockets-rails/issues/49)
+~~*Attention* currently not working with `rails >= 4.2`~~
 
-You may optionally add this to your Gemfile
+~~As of rails 4 we are facing a problem for the productive environments.
+See [Inability to compile nondigest and digest assets breaks compatibility with bad gems #49](https://github.com/rails/sprockets-rails/issues/49)~~
+
+~~You may optionally add this to your Gemfile~~
 
 ```
 gem 'non-stupid-digest-assets', '>= 1.1', github: 'm0gg/non-stupid-digest-assets'
 ```
 
-this will enable a workaround for digesting the assets while precompiling dart files as
+~~this will enable a workaround for digesting the assets while precompiling dart files as
 seen in [non-stupid-digest-assets](https://github.com/alexspeller/non-stupid-digest-assets) and
-additionally rewrite the manifests to use the non-digest files.
+additionally rewrite the manifests to use the non-digest files.~~
 
 
 ### Changelog ###
