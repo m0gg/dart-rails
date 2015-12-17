@@ -26,8 +26,8 @@ app/assets/dart/dart_app.dart  app/assets/dart/dart_app.js.dart2js
 1. `Gemfile`
 
   ```ruby
-  gem 'ruby-dart2js', git: 'https://github.com/m0gg/ruby-dart2js'
-  gem 'dart-rails', git: 'https://github.com/m0gg/dart-rails.git', branch: 'behavior_change_dart2js'
+  gem 'ruby-dart2js'
+  gem 'dart-rails'
    ```
 
 2. `rails generate dart:assets`
