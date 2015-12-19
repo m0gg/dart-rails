@@ -71,10 +71,12 @@ app/assets/dart/dart_app.dart  app/assets/dart/dart_app.js.dart2js
 
     - deliver the code in dart for access from dartium and for acesss from other browsers, in javascript
         ```
-        <%= auto_dart_include_tag 'dart_app' %>
+        <%= auto_dart_include_tag 'dart_app', {debug:true} %>
         ```
         This option is digesting and turbolinks safe, but has not been tested thoroughly.
-        
+        Note: Without {debug:true} explicitly passed to the tag, you may encounter: 
+        ```Asset was not declared to be precompiled in production.```
+        This occures with sprockets (3.5.2) as it relies solely on on the tag's option argument :debug on deciding the value of allow_non_precompiled in Sprockets::Rails::Helper#resolve_asset_path. 
          
 4. `rake pub:get`
 
