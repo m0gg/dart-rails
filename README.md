@@ -76,7 +76,7 @@ app/assets/dart/dart_app.dart  app/assets/dart/dart_app.js.dart2js
         This option is digesting and turbolinks safe, but has not been tested thoroughly.<br>
         Note: Without {debug:true} explicitly passed to the helper, you may encounter: 
         ```Asset was not declared to be precompiled in production.```
-        This occures with sprockets (3.5.2) as it relies solely on on the tag's option argument :debug on deciding the value of allow_non_precompiled in Sprockets::Rails::Helper#resolve_asset_path.
+        This occures with sprockets (3.5.2) as it relies solely on on the tag's option argument :debug on deciding the value of allow_non_precompiled in Sprockets::Rails::Helper#resolve_asset_path.<br>
         Note2: Currently there is a bug or design flaw that causes the dart script compiled to javascript to ignore all dom elements that come below the dart script tag(auto_dart_include_tag is our case): https://github.com/dart-lang/sdk/issues/25103
         Provide the "defer:true" option to the helper to circumvent the issue.
          
