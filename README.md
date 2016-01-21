@@ -40,40 +40,46 @@ app/assets/dart/dart_app.dart  app/assets/dart/dart_app.js.dart2js
   create  app/assets/dart/pubspec.yaml
   ```
 
-3. asset links
+3.  Delivering dart/javascript code.
 
-    Now it's up to you wether you want to serve your `.dart` files and it's
-    compiled `.js` variant side-by-side or only one of those variants.
+    You have four options. You can use one and only one of the following four:
 
-    - `.dart` and `.js`
+    - deliver javascript code compiled from dart
 
-        You'll need to add following to the bottom of your body in the layout
-        `layout.html.erb` (for instance)
+        ```
+            //= require dart_app
+        ```
+        Append the above to your "AppRoot/app/assets/javascripts/application.js"
+        While this enables you to add several dart programs, there is no guarantee
+        it will work out. (untested)
+    
+    - deliver the code in dart first, then on the browser side fetch the javascript code generated from dart, if the browser was not dartium.
 
+        add the following tags to your layout (`layout.html.erb` or `application.html.erb`) after the yield statement.
         ```
         <%= dart_include_tag 'dart_app' %>
         <%= javascript_include_tag 'dart' %>
         ```
 
-    - `.js` only
+    - deliver dart only
 
-        simply add this to your `application.js`
-        ```
-        //= require dart_app
-        ```
-        While this would enable you to add several dart programs, there is no guarantee
-        it will work out. (untested)
-
-    - `.dart` only
-
-        You just need to add the `dart_include_tag` to the bottom of your body in the layout
-        `layout.html.erb` (for instance)
-
+        add the `dart_include_tag` to your layout after the yield statement.
         ```
         <%= dart_include_tag 'dart_app' %>
         ```
+        Note: You must set "config.assets.digest" to false in "AppRoot/config/environments/development.rb" 
 
-
+    - deliver the code in dart for access from dartium and for acesss from other browsers, in javascript
+        ```
+        <%= auto_dart_include_tag 'dart_app', {debug:true,defer:true} %>
+        ```
+        This option is digesting and turbolinks safe, but has not been tested thoroughly.<br>
+        Note: Without {debug:true} explicitly passed to the helper, you may encounter: 
+        ```Asset was not declared to be precompiled in production.```
+        This occures with sprockets (3.5.2) as it relies solely on on the tag's option argument :debug on deciding the value of allow_non_precompiled in Sprockets::Rails::Helper#resolve_asset_path.<br>
+        Note2: Currently there is a bug or design flaw that causes the dart script compiled to javascript to ignore all dom elements that come below the dart script tag(auto_dart_include_tag in our case): https://github.com/dart-lang/sdk/issues/25103
+        Provide the "defer:true" option to the helper to circumvent the issue.
+         
 4. `rake pub:get`
 
     run `rake pub:get` to respect the dependencies in your `pubspec.yaml`.
