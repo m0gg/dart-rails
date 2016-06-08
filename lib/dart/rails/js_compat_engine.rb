@@ -8,7 +8,7 @@ module Dart #:nodoc:
       initializer :assets do |app|
 
         # make dart.js compatibility-script accessible for sprockets
-        app.assets.append_path(File.join(root, 'lib', 'assets', 'javascripts'))
+        ::Rails.application.config.assets.append_path(File.join(root, 'lib', 'assets', 'javascripts'))
 
         # precompile compatibility-script(s)
         ::Rails.application.config.assets.precompile += %w(dart_app.js dart.js)
