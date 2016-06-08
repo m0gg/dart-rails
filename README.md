@@ -69,9 +69,11 @@ app/assets/dart/dart_app.dart  app/assets/dart/dart_app.js.dart2js
         * `dart_include_tag 'dart_app'` adds your `dart_app.dart`
         * `javascript_include_tag 'dart'` adds the `dart.js` from the gem for compatibility
         
+        As of rails 4 you'll need to turn asset digesting off, append `config.assets.digest = false` to the environment you like to use.
+        
         ###### for those who are interested in the `javascript_include_tag 'dart'` ######
         
-        The `dart.js` will replace the `<script>` tags of the type `application/dart` to ones with type `application/javascript` and substitute the `.dart` extension of the src attribute with `.js` if the browser is not Dartium. This ensures that you are able to deliver native dart to Dartium and js to all others.  
+        The `dart.js` will replace the `<script>` tags of the type `application/dart` to ones with type `application/javascript` and substitute the `.dart` extension of the src attribute with `.js` if the browser is not Dartium. This ensures that you are able to deliver native dart to Dartium and js to all others. Because we only have digested asset names in rails 4, you'll need to turn it off completely to ensure your renamed dart script will point to a non-digested js script. I know this is stupid but we don't have any browser besides Dartium that would support native dart anyways...    
 
     - ##### `.js` only #####
 
